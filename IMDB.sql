@@ -2,7 +2,7 @@ USE imdb;
 
 /* Now that you have imported the data sets, let’s explore some of the tables. 
  To begin with, it is beneficial to know the shape of the tables and whether any column has null values.
- Further in this segment, you will take a look at 'movies' and 'genre' tables.*/
+ Further in this segment, we will take a look at 'movies' and 'genre' tables.*/
 
 
 
@@ -12,7 +12,7 @@ USE imdb;
 
 
 -- Q1. Find the total number of rows in each table of the schema?
--- Type your code below:			
+			
 
 Select count(*) from director_mapping;
 select count(*) from genre;
@@ -23,7 +23,7 @@ select count(*) from role_mapping;
 
 
 -- Q2. Which columns in the movie table have null values?
--- Type your code below:
+
 select 
 sum (case when id is NULL THEN 1 else 0 end) AS id_null
 sum (case when title is  NULL THEN 1 else 0 end) AS title_null,
@@ -42,7 +42,7 @@ from movie;
 
 
 
--- Now as you can see four columns of the movie table has null values. Let's look at the at the movies released each year. 
+-- Now as we can see four columns of the movie table has null values. Let's look at the at the movies released each year. 
 -- Q3. Find the total number of movies released each year? How does the trend look month wise? (Output expected)
 
 /* Output format for the first part:
@@ -63,7 +63,7 @@ Output format for the second part of the question:
 |	2			|	 231			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
+
 select year as Year, count(title) AS number_of_movies
 from movie
 group by year;
@@ -74,17 +74,11 @@ group by month_num
 order by month_num;
 
 
-
-
-
-
-
 /*The highest number of movies is produced in the month of March.
-So, now that you have understood the month-wise trend of movies, let’s take a look at the other details in the movies table. 
+So, now that we have understood the month-wise trend of movies, let’s take a look at the other details in the movies table. 
 We know USA and India produces huge number of movies each year. Lets find the number of movies produced by USA or India for the last year.*/
   
 -- Q4. How many movies were produced in the USA or India in the year 2019??
--- Type your code below:
 
 select count(id) AS movie_count
 from movie
@@ -96,7 +90,6 @@ Exploring table Genre would be fun!!
 Let’s find out the different genres in the dataset.*/
 
 -- Q5. Find the unique list of the genres present in the data set?
--- Type your code below:
 
 select distinct genre from genre;
 
@@ -106,7 +99,6 @@ Now, wouldn’t you want to know which genre had the highest number of movies pr
 Combining both the movie and genres table can give more interesting insights. */
 
 -- Q6.Which genre had the highest number of movies produced overall?
--- Type your code below:
 
 select genre, count(m.id) AS no_of_movies
 from movie AS movie
@@ -116,14 +108,12 @@ group by genre
 order by no_of_movies desc limit 1;
 
 
-
-
 /* So, based on the insight that you just drew, RSVP Movies should focus on the ‘Drama’ genre. 
 But wait, it is too early to decide. A movie can belong to two or more genres. 
 So, let’s find out the count of movies that belong to only one genre.*/
 
 -- Q7. How many movies belong to only one genre?
--- Type your code below:
+
 
 with one_genre as
 (select movie_id, count(genre) AS g_count from genre
@@ -131,7 +121,6 @@ with one_genre as
  having g_count =1)
 select count(movie_id) AS single_movie_genre
 from one_genre;
-
 
 
 /* There are more than three thousand movies which has only one genre associated with them.
@@ -258,15 +247,13 @@ Summarising the ratings table based on the movie counts by median rating can giv
 |	.			|		.			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
+
 -- Order by is good to have
 
 select median_rating, count(movie_id) AS movie_count
 from ratings 
 group by median_rating
 order by movie_count desc;
-
-
 
 
 
@@ -281,7 +268,7 @@ Now, let's find out the production house with which RSVP Movies can partner for 
 +------------------+-------------------+---------------------+
 | The Archers	   |		1		   |			1	  	 |
 +------------------+-------------------+---------------------+*/
--- Type your code below:
+
 
 with hit_movie_summary
 as ( select production_company,
@@ -311,7 +298,7 @@ where prod_comp_rank=1;
 |	.			|		.			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
+
 
 select genre, count(m.id) AS movie_count
 from movie AS m
@@ -340,7 +327,7 @@ order by movie_count desc;
 |	.			|		.			|			.		  |
 |	.			|		.			|			.		  |
 +---------------+-------------------+---------------------+*/
--- Type your code below:
+
 
 select title, avg_rating, genre
 from movie AS m
