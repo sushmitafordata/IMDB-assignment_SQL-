@@ -9,3 +9,15 @@ The production company wants to plan their every move analytically based on data
  
 
 You are a data analyst and an SQL expert. You have to use SQL to analyse the given data and give recommendations to RSVP Movies based on the insights. For your convenience, the entire analytics process has been divided into four segments, where each segment leads to significant insights from different combinations of tables. The questions in each segment with business objectives are written in the script given below. 
+
+
+# SUMMARY OF THE DERIVED INSIGHTS
+
+
+![image](https://github.com/sushmitafordata/IMDB-assignment_SQL-/assets/135410984/8a277b6a-d662-43d1-a00a-e38b41d452d5)
+
+![image](https://github.com/sushmitafordata/IMDB-assignment_SQL-/assets/135410984/abe43ad2-3a0d-47de-ab8d-78772debd700)
+
+
+
+
